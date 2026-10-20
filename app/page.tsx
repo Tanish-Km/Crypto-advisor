@@ -13,30 +13,15 @@ import {
   Compass,
   ShieldCheck,
   Sparkles,
-  ArrowRight,
-  TrendingUp,
   Layers,
   Sliders,
-  CheckCircle2,
-  Lock,
   Cpu,
-  UserCheck,
-  Film,
-  Video,
   Play,
   Pause,
   Volume2,
   VolumeX,
-  Wrench,
   Package,
   CheckCircle,
-  FileVideo,
-  Monitor,
-  FolderArchive,
-  Palette,
-  Workflow,
-  Share2,
-  Maximize2,
 } from 'lucide-react';
 
 // Dynamic import of 3D Scene with SSR false per Plan.md Section 11 & Design.md Section 11.3
@@ -52,7 +37,7 @@ const LandingHeroScene = dynamic(
 
 export default function LandingPage() {
   const { loginAsDemoInvestor, loginAsDemoAdvisor } = useAppStore();
-  const [activeSectionTab, setActiveSectionTab] = useState<'all' | 'competencies' | 'techniques' | 'software' | 'deliverables' | 'practices'>('all');
+  const [activeSectionTab, setActiveSectionTab] = useState<'all' | 'pillars' | 'frameworks' | 'architecture' | 'deliverables' | 'practices'>('all');
 
   // Video Player state
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -117,20 +102,19 @@ export default function LandingPage() {
             {/* Left Column: Heading & Introduction */}
             <div className="lg:col-span-7 text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-pill glass-surface elev-z1 border border-accent/40 text-xs font-mono text-accent mb-4 shadow-[0_0_15px_rgba(143,184,214,0.3)]">
-                <Film className="w-3.5 h-3.5 text-accent animate-pulse" />
-                <span>Motion Graphics &amp; Animated Visual Content • 3D Platforms</span>
+                <Compass className="w-3.5 h-3.5 text-accent animate-spin" style={{ animationDuration: '15s' }} />
+                <span>Risk-Matched Portfolios • Explainable Guidance • Certified Advisor in the Loop</span>
               </div>
 
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-text-primary leading-[1.08] mb-4">
-                Motion Graphics{' '}
+                Explainable Crypto Guidance{' '}
                 <span className="bg-gradient-to-r from-accent via-accent-2 to-gold bg-clip-text text-transparent">
-                  Designer
+                  For Beginners
                 </span>
               </h1>
 
               <p className="text-base sm:text-lg text-text-secondary leading-relaxed max-w-2xl">
-                Expertise in creating animated visual content for video, broadcast, and digital platforms.
-                You blend design principles with animation techniques.
+                A 3D risk-matched guidance platform blending deterministic asset scoring with certified human advisor verification. Discover your risk persona, explore your 3D Risk Galaxy, and invest with institutional confidence.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 mt-6">
@@ -184,10 +168,10 @@ export default function LandingPage() {
                   <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none select-none">
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded-pill bg-void/80 border border-accent/40 text-accent font-semibold flex items-center gap-1.5 backdrop-blur-md">
                       <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
-                      MOTION GRAPHICS REEL
+                      3D RISK COSMOS &amp; ENGINE
                     </span>
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded-pill bg-void/80 border border-gold/40 text-gold font-semibold backdrop-blur-md">
-                      1080P • 24 FPS
+                      LIVE SIMULATION • 24 FPS
                     </span>
                   </div>
 
@@ -213,20 +197,20 @@ export default function LandingPage() {
                       </button>
 
                       <span className="text-[10px] font-mono text-text-secondary pl-1">
-                        Kinetic Halftone Crystal
+                        Multi-Metric Risk Orbit
                       </span>
                     </div>
 
                     <span className="text-[10px] font-mono text-accent-2 font-semibold px-1.5 py-0.5 rounded bg-accent-2/15">
-                      PRORES • LOTTIE
+                      DETERMINISTIC • CFA AUDITED
                     </span>
                   </div>
                 </div>
 
                 {/* Technical Specification Footnote */}
                 <div className="mt-2.5 px-1 flex items-center justify-between text-[11px] font-mono text-text-secondary">
-                  <span>Particle Grid Animation</span>
-                  <span className="text-accent font-semibold">12.0s Seamless Loop</span>
+                  <span>Spatial Volatility Engine</span>
+                  <span className="text-accent font-semibold">Deterministic 3D Feed</span>
                 </div>
               </Card>
             </div>
@@ -235,12 +219,12 @@ export default function LandingPage() {
           {/* Interactive Filter Pills for Hero Specifications */}
           <div className="flex flex-wrap items-center gap-2 mb-6">
             {[
-              { id: 'all', label: 'All Specifications' },
-              { id: 'competencies', label: 'Core Competencies' },
-              { id: 'techniques', label: 'Animation Techniques' },
-              { id: 'software', label: 'Software Proficiency' },
-              { id: 'deliverables', label: 'Projects & Deliverables' },
-              { id: 'practices', label: 'Best Practices' },
+              { id: 'all', label: 'All Frameworks' },
+              { id: 'pillars', label: 'Advisory Pillars' },
+              { id: 'frameworks', label: 'Risk Frameworks' },
+              { id: 'architecture', label: 'Engine Architecture' },
+              { id: 'deliverables', label: 'Client Deliverables' },
+              { id: 'practices', label: 'Safety & Governance' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -258,160 +242,160 @@ export default function LandingPage() {
 
           {/* Detailed Hero Specifications Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pointer-events-auto">
-            {/* 1. Core Competencies */}
-            {(activeSectionTab === 'all' || activeSectionTab === 'competencies') && (
+            {/* 1. Core Advisory Pillars */}
+            {(activeSectionTab === 'all' || activeSectionTab === 'pillars') && (
               <Card elevation="z2" className="p-6 glass-surface border-accent/30" tilt maxTilt={6}>
                 <div className="flex items-center gap-2.5 mb-3">
                   <div className="p-2 rounded-lg bg-accent/20 text-accent">
-                    <Workflow className="w-5 h-5" />
+                    <ShieldCheck className="w-5 h-5" />
                   </div>
                   <h3 className="font-display font-bold text-lg text-text-primary">
-                    Core Competencies
+                    Core Advisory Pillars
                   </h3>
                 </div>
 
                 <ul className="space-y-2.5 text-xs text-text-secondary leading-relaxed">
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-accent">
-                      Animation Principles
+                      Risk-Matched Portfolios
                     </strong>
-                    Timing, easing, anticipation, follow-through.
+                    Algorithmic suitability scoring mapped to Cautious Saver, Balanced Builder, or Growth Seeker.
                   </li>
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-accent">
-                      Visual Design
+                      Explainable Asset Scores
                     </strong>
-                    Typography, color theory, composition.
+                    Transparent multi-metric ranking across liquidity, stability, market cap, and track record.
                   </li>
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-accent">
-                      Technical Execution
+                      Human Advisor Audit
                     </strong>
-                    Software proficiency and workflow optimization.
+                    Every automated proposal is reviewed, signed, and stamped by a certified CFA professional.
                   </li>
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-accent">
-                      Storytelling
+                      Crash Stress Testing
                     </strong>
-                    Communicating messages through motion.
+                    Historical drawdown modeling against 2018 Crypto Winter, 2022 crashes, and custom shocks.
                   </li>
                 </ul>
               </Card>
             )}
 
-            {/* 2. Animation Techniques: Fundamental Principles & Styles */}
-            {(activeSectionTab === 'all' || activeSectionTab === 'techniques') && (
+            {/* 2. Guidance Frameworks */}
+            {(activeSectionTab === 'all' || activeSectionTab === 'frameworks') && (
               <Card elevation="z2" className="p-6 glass-surface border-accent-2/30" tilt maxTilt={6}>
                 <div className="flex items-center gap-2.5 mb-3">
                   <div className="p-2 rounded-lg bg-accent-2/20 text-accent-2">
-                    <Play className="w-5 h-5 fill-current" />
+                    <Layers className="w-5 h-5" />
                   </div>
                   <h3 className="font-display font-bold text-lg text-text-primary">
-                    Animation Techniques
+                    Guidance Frameworks
                   </h3>
                 </div>
 
                 <div className="space-y-4 text-xs text-text-secondary leading-relaxed">
                   <div>
                     <h4 className="font-semibold text-text-primary text-[11px] uppercase tracking-wider mb-1.5 font-mono text-accent-2">
-                      Fundamental Principles
+                      Fundamental Safeguards
                     </h4>
                     <ul className="space-y-1 list-disc pl-4 text-[12px]">
-                      <li>Squash and stretch for organic movement</li>
-                      <li>Anticipation and follow-through</li>
-                      <li>Ease in/out for natural motion</li>
-                      <li>Secondary action for depth</li>
-                      <li>Staging for clarity</li>
+                      <li>Strict 100% mathematical allocation constraint</li>
+                      <li>Compulsory stablecoin buffer for conservative tiers</li>
+                      <li>Automated DCA schedules for amounts over $5,000</li>
+                      <li>Explicit downside loss &amp; liquidity warnings</li>
+                      <li>Objective reconsider-when trigger conditions</li>
                     </ul>
                   </div>
 
                   <div className="pt-2 border-t border-border-subtle/50">
                     <h4 className="font-semibold text-text-primary text-[11px] uppercase tracking-wider mb-1.5 font-mono text-accent-2">
-                      Motion Design Styles
+                      Supported Investor Personas
                     </h4>
                     <ol className="space-y-1 list-decimal pl-4 text-[12px]">
-                      <li>Kinetic typography</li>
-                      <li>Explainer video graphics</li>
-                      <li>Logo animations and reveals</li>
-                      <li>Infographic animations</li>
-                      <li>Broadcast graphics packages</li>
+                      <li>Cautious Saver (Capital preservation &amp; blue-chip stability)</li>
+                      <li>Balanced Builder (Core tier-1 assets with controlled growth)</li>
+                      <li>Growth Seeker (High-beta upside with measured diversification)</li>
+                      <li>Dollar-Cost Averager (Milestone-based tranche entry)</li>
+                      <li>Long-Horizon Staker (Yield &amp; protocol utility focus)</li>
                     </ol>
                   </div>
                 </div>
               </Card>
             )}
 
-            {/* 3. Software Proficiency */}
-            {(activeSectionTab === 'all' || activeSectionTab === 'software') && (
+            {/* 3. Engine Architecture */}
+            {(activeSectionTab === 'all' || activeSectionTab === 'architecture') && (
               <Card elevation="z2" className="p-6 glass-surface border-gold/30" tilt maxTilt={6}>
                 <div className="flex items-center gap-2.5 mb-3">
                   <div className="p-2 rounded-lg bg-gold/20 text-gold">
-                    <Wrench className="w-5 h-5" />
+                    <Cpu className="w-5 h-5" />
                   </div>
                   <h3 className="font-display font-bold text-lg text-text-primary">
-                    Software Proficiency
+                    Engine Architecture
                   </h3>
                 </div>
 
                 <ul className="space-y-2.5 text-xs text-text-secondary leading-relaxed">
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-gold">
-                      After Effects
+                      Multi-Attribute Scoring
                     </strong>
-                    Primary motion graphics tool.
+                    Deterministic normalization across 5 distinct metric dimensions.
                   </li>
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-gold">
-                      Cinema 4D / Blender
+                      3D Risk Galaxy (WebGL)
                     </strong>
-                    3D elements and integration.
+                    Spatial universe mapping asset volatility to radial orbits.
                   </li>
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-gold">
-                      Illustrator / Photoshop
+                      Live Market Ingestion
                     </strong>
-                    Asset creation and visual design.
+                    Real-time CoinGecko price &amp; volume feeds with cached fallback.
                   </li>
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-gold">
-                      Premiere Pro
+                      Historical Backtester
                     </strong>
-                    Video integration and editorial pacing.
+                    Monte Carlo timeseries simulator across 1-year, 3-year, and max windows.
                   </li>
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-gold">
-                      Lottie / Bodymovin
+                      Advisor Verification Desk
                     </strong>
-                    High-performance web animation export.
+                    Dedicated review portal with interactive 3D tower and digital gold seal.
                   </li>
                 </ul>
               </Card>
             )}
 
-            {/* 4. Project Types */}
+            {/* 4. Asset Categories */}
             {(activeSectionTab === 'all' || activeSectionTab === 'deliverables') && (
               <Card elevation="z2" className="p-6 glass-surface border-border-glow/30" tilt maxTilt={6}>
                 <div className="flex items-center gap-2.5 mb-3">
                   <div className="p-2 rounded-lg bg-surface-raised text-accent">
-                    <Video className="w-5 h-5" />
+                    <Sliders className="w-5 h-5" />
                   </div>
                   <h3 className="font-display font-bold text-lg text-text-primary">
-                    Project Types
+                    Asset Categories
                   </h3>
                 </div>
 
                 <ul className="space-y-1.5 text-xs text-text-secondary leading-relaxed list-disc pl-4">
-                  <li>Animated logos and brand elements</li>
-                  <li>Social media content and ads</li>
-                  <li>Explainer and tutorial videos</li>
-                  <li>Broadcast graphics packages</li>
-                  <li>Title sequences and lower thirds</li>
-                  <li>UI/UX micro-interactions &amp; animations</li>
+                  <li><strong>Store of Value:</strong> Bitcoin (BTC) as foundational collateral</li>
+                  <li><strong>Smart Contracts:</strong> Ethereum (ETH), Solana (SOL), Avalanche (AVAX)</li>
+                  <li><strong>Stable Reserves:</strong> USD Coin (USDC), Tether (USDT) for cash buffers</li>
+                  <li><strong>DeFi Ecosystems:</strong> Uniswap (UNI), Chainlink (LINK) oracle feeds</li>
+                  <li><strong>Layer-1 Networks:</strong> Polkadot (DOT), Cardano (ADA), BNB Chain</li>
+                  <li><strong>Risk Weightings:</strong> Proportional allocations based on user score</li>
                 </ul>
               </Card>
             )}
 
-            {/* 5. Deliverables */}
+            {/* 5. Client Deliverables */}
             {(activeSectionTab === 'all' || activeSectionTab === 'deliverables') && (
               <Card elevation="z2" className="p-6 glass-surface border-success/30" tilt maxTilt={6}>
                 <div className="flex items-center gap-2.5 mb-3">
@@ -419,46 +403,46 @@ export default function LandingPage() {
                     <Package className="w-5 h-5" />
                   </div>
                   <h3 className="font-display font-bold text-lg text-text-primary">
-                    Deliverables
+                    Advisory Deliverables
                   </h3>
                 </div>
 
                 <ul className="space-y-2 text-xs text-text-secondary leading-relaxed">
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-success">
-                      Animated Video Files
+                      Personalized Risk Dossier
                     </strong>
-                    High-definition MP4, MOV, Apple ProRes.
+                    Full suitability breakdown with 1–10 risk score and investor persona badge.
                   </li>
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-success">
-                      Lottie JSON Files
+                      Suitability-Verified Portfolio
                     </strong>
-                    Optimized vector animations for web and mobile apps.
+                    Balanced allocation totaling exactly 100% with certified advisor approval.
                   </li>
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-success">
-                      Project Files &amp; Assets
+                      Plain-Language Explanations
                     </strong>
-                    Fully organized layered comps and source materials.
+                    2 to 4 clear rationale statements, objective risks, and trigger indicators per coin.
                   </li>
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-success">
-                      Style Frames &amp; Storyboards
+                      Stress Test Report
                     </strong>
-                    Pre-production visual direction and motion blueprints.
+                    Calculated maximum drawdown simulation and downside risk analysis.
                   </li>
                   <li>
                     <strong className="text-text-primary block font-mono text-[11px] text-success">
-                      Animation Specifications
+                      DCA Capital Entry Roadmap
                     </strong>
-                    Detailed easing curves, durations, and implementation guides.
+                    Time-staggered tranche schedule to eliminate emotional market-timing risks.
                   </li>
                 </ul>
               </Card>
             )}
 
-            {/* 6. Best Practices */}
+            {/* 6. Best Practices & Safety Governance */}
             {(activeSectionTab === 'all' || activeSectionTab === 'practices') && (
               <Card elevation="z2" className="p-6 glass-surface border-warning/30" tilt maxTilt={6}>
                 <div className="flex items-center gap-2.5 mb-3">
@@ -466,34 +450,34 @@ export default function LandingPage() {
                     <CheckCircle className="w-5 h-5" />
                   </div>
                   <h3 className="font-display font-bold text-lg text-text-primary">
-                    Best Practices
+                    Safety &amp; Governance
                   </h3>
                 </div>
 
                 <ul className="space-y-2 text-xs text-text-secondary leading-relaxed">
                   <li className="flex items-start gap-2">
                     <span className="text-warning font-bold">•</span>
-                    <span><strong>Style Frames:</strong> Start with style frames for client and stakeholder approval.</span>
+                    <span><strong>Human in the Loop:</strong> Certified professional review before any portfolio is published.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-warning font-bold">•</span>
-                    <span><strong>Pre-Compositions:</strong> Use structured pre-comps for clean project hierarchy.</span>
+                    <span><strong>No Price Speculation:</strong> Zero speculative price predictions or guaranteed return claims.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-warning font-bold">•</span>
-                    <span><strong>Modular Elements:</strong> Create reusable kinetic building blocks.</span>
+                    <span><strong>Cold Storage Education:</strong> Comprehensive hardware wallet and non-custodial safety guidance.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-warning font-bold">•</span>
-                    <span><strong>Consistent Timing:</strong> Maintain harmonious easing curves across scenes.</span>
+                    <span><strong>Mathematical Integrity:</strong> Allocations strictly sum to 100% with no unallocated drift.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-warning font-bold">•</span>
-                    <span><strong>Platform Optimization:</strong> Calibrate compression and framerates for target devices.</span>
+                    <span><strong>Complete Audit Trail:</strong> Versioned changelog tracking every edit, note, and advisor approval.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-warning font-bold">•</span>
-                    <span><strong>Version Control:</strong> Systematic iteration and asset backups throughout the project lifecycle.</span>
+                    <span><strong>Educational Compliance:</strong> Prominent disclaimers reinforcing education over financial advice.</span>
                   </li>
                 </ul>
               </Card>
