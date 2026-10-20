@@ -22,6 +22,12 @@ import {
   VolumeX,
   Package,
   CheckCircle,
+  Lock,
+  TrendingUp,
+  BarChart3,
+  Check,
+  FileText,
+  AlertTriangle,
 } from 'lucide-react';
 
 // Dynamic import of 3D Scene with SSR false per Plan.md Section 11 & Design.md Section 11.3
@@ -37,7 +43,7 @@ const LandingHeroScene = dynamic(
 
 export default function LandingPage() {
   const { loginAsDemoInvestor, loginAsDemoAdvisor } = useAppStore();
-  const [activeSectionTab, setActiveSectionTab] = useState<'all' | 'pillars' | 'frameworks' | 'architecture' | 'deliverables' | 'practices'>('all');
+  const [activeSectionTab, setActiveSectionTab] = useState<'all' | 'pillars' | 'frameworks' | 'architecture' | 'assets' | 'deliverables' | 'governance'>('all');
 
   // Video Player state
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -221,10 +227,11 @@ export default function LandingPage() {
             {[
               { id: 'all', label: 'All Frameworks' },
               { id: 'pillars', label: 'Advisory Pillars' },
-              { id: 'frameworks', label: 'Risk Frameworks' },
-              { id: 'architecture', label: 'Engine Architecture' },
+              { id: 'frameworks', label: 'Risk Safeguards' },
+              { id: 'architecture', label: 'Scoring Engine' },
+              { id: 'assets', label: 'Curated Assets' },
               { id: 'deliverables', label: 'Client Deliverables' },
-              { id: 'practices', label: 'Safety & Governance' },
+              { id: 'governance', label: 'Safety & Governance' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -245,239 +252,387 @@ export default function LandingPage() {
             {/* 1. Core Advisory Pillars */}
             {(activeSectionTab === 'all' || activeSectionTab === 'pillars') && (
               <Card elevation="z2" className="p-6 glass-surface border-accent/30" tilt maxTilt={6}>
-                <div className="flex items-center gap-2.5 mb-3">
-                  <div className="p-2 rounded-lg bg-accent/20 text-accent">
-                    <ShieldCheck className="w-5 h-5" />
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-2 rounded-lg bg-accent/20 text-accent">
+                      <ShieldCheck className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-base text-text-primary">
+                        Core Advisory Pillars
+                      </h3>
+                      <span className="text-[10px] font-mono text-accent">Institutional Dual-Engine</span>
+                    </div>
                   </div>
-                  <h3 className="font-display font-bold text-lg text-text-primary">
-                    Core Advisory Pillars
-                  </h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-pill bg-accent/15 border border-accent/40 text-accent font-semibold">
+                    DUAL ENGINE
+                  </span>
                 </div>
 
-                <ul className="space-y-2.5 text-xs text-text-secondary leading-relaxed">
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-accent">
-                      Risk-Matched Portfolios
-                    </strong>
-                    Algorithmic suitability scoring mapped to Cautious Saver, Balanced Builder, or Growth Seeker.
+                <ul className="space-y-3 text-xs text-text-secondary leading-relaxed">
+                  <li className="p-2 rounded bg-surface-raised/40 border border-border-subtle/40">
+                    <div className="flex items-center justify-between mb-1">
+                      <strong className="text-text-primary font-mono text-[11px] text-accent">
+                        Risk-Matched Portfolios
+                      </strong>
+                      <span className="text-[10px] font-mono text-text-muted">Scale 1–10</span>
+                    </div>
+                    <p className="text-[11px] text-text-secondary">
+                      Algorithmic suitability scoring mapped directly to Cautious Saver, Balanced Builder, or Growth Seeker personas.
+                    </p>
                   </li>
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-accent">
-                      Explainable Asset Scores
-                    </strong>
-                    Transparent multi-metric ranking across liquidity, stability, market cap, and track record.
+                  <li className="p-2 rounded bg-surface-raised/40 border border-border-subtle/40">
+                    <div className="flex items-center justify-between mb-1">
+                      <strong className="text-text-primary font-mono text-[11px] text-accent">
+                        Multi-Attribute Scoring
+                      </strong>
+                      <span className="text-[10px] font-mono text-text-muted">5 Dimensions</span>
+                    </div>
+                    <p className="text-[11px] text-text-secondary">
+                      Deterministic normalization across liquidity, stability, network scale, track record, and utility.
+                    </p>
                   </li>
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-accent">
-                      Human Advisor Audit
-                    </strong>
-                    Every automated proposal is reviewed, signed, and stamped by a certified CFA professional.
+                  <li className="p-2 rounded bg-surface-raised/40 border border-border-subtle/40">
+                    <div className="flex items-center justify-between mb-1">
+                      <strong className="text-text-primary font-mono text-[11px] text-accent">
+                        Human Advisor Audit
+                      </strong>
+                      <span className="text-[10px] font-mono text-gold">CFA In Loop</span>
+                    </div>
+                    <p className="text-[11px] text-text-secondary">
+                      Every automated portfolio is reviewed, signed, and stamped by a certified CFA professional before activation.
+                    </p>
                   </li>
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-accent">
-                      Crash Stress Testing
-                    </strong>
-                    Historical drawdown modeling against 2018 Crypto Winter, 2022 crashes, and custom shocks.
+                  <li className="p-2 rounded bg-surface-raised/40 border border-border-subtle/40">
+                    <div className="flex items-center justify-between mb-1">
+                      <strong className="text-text-primary font-mono text-[11px] text-accent">
+                        Crash Stress Testing
+                      </strong>
+                      <span className="text-[10px] font-mono text-warning">-84% Winter</span>
+                    </div>
+                    <p className="text-[11px] text-text-secondary">
+                      Simulated historical drawdown modeling against 2018 winter, 2022 crashes, and custom market shocks.
+                    </p>
                   </li>
                 </ul>
               </Card>
             )}
 
-            {/* 2. Guidance Frameworks */}
+            {/* 2. Risk & Guidance Frameworks */}
             {(activeSectionTab === 'all' || activeSectionTab === 'frameworks') && (
               <Card elevation="z2" className="p-6 glass-surface border-accent-2/30" tilt maxTilt={6}>
-                <div className="flex items-center gap-2.5 mb-3">
-                  <div className="p-2 rounded-lg bg-accent-2/20 text-accent-2">
-                    <Layers className="w-5 h-5" />
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-2 rounded-lg bg-accent-2/20 text-accent-2">
+                      <Layers className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-base text-text-primary">
+                        Risk Safeguards &amp; Personas
+                      </h3>
+                      <span className="text-[10px] font-mono text-accent-2">Capital Protection</span>
+                    </div>
                   </div>
-                  <h3 className="font-display font-bold text-lg text-text-primary">
-                    Guidance Frameworks
-                  </h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-pill bg-accent-2/15 border border-accent-2/40 text-accent-2 font-semibold">
+                    SAFEGUARDS
+                  </span>
                 </div>
 
-                <div className="space-y-4 text-xs text-text-secondary leading-relaxed">
+                <div className="space-y-3.5 text-xs text-text-secondary leading-relaxed">
                   <div>
                     <h4 className="font-semibold text-text-primary text-[11px] uppercase tracking-wider mb-1.5 font-mono text-accent-2">
                       Fundamental Safeguards
                     </h4>
-                    <ul className="space-y-1 list-disc pl-4 text-[12px]">
-                      <li>Strict 100% mathematical allocation constraint</li>
-                      <li>Compulsory stablecoin buffer for conservative tiers</li>
-                      <li>Automated DCA schedules for amounts over $5,000</li>
-                      <li>Explicit downside loss &amp; liquidity warnings</li>
-                      <li>Objective reconsider-when trigger conditions</li>
+                    <ul className="space-y-1.5 text-[11px]">
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-success shrink-0 mt-0.5" />
+                        <span><strong>100% Mathematical Constraint:</strong> Zero unallocated cash drift or speculative leverage.</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-success shrink-0 mt-0.5" />
+                        <span><strong>Compulsory Stablecoin Buffer:</strong> 40%–70% cash buffer (USDC) for conservative risk profiles.</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-success shrink-0 mt-0.5" />
+                        <span><strong>Automated DCA Schedules:</strong> Staggered tranche deployment for amounts over $5,000.</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check className="w-3.5 h-3.5 text-success shrink-0 mt-0.5" />
+                        <span><strong>Downside Volatility Triggers:</strong> Transparent rebalance alerts if market swings exceed 15%.</span>
+                      </li>
                     </ul>
                   </div>
 
                   <div className="pt-2 border-t border-border-subtle/50">
                     <h4 className="font-semibold text-text-primary text-[11px] uppercase tracking-wider mb-1.5 font-mono text-accent-2">
-                      Supported Investor Personas
+                      Investor Personas
                     </h4>
-                    <ol className="space-y-1 list-decimal pl-4 text-[12px]">
-                      <li>Cautious Saver (Capital preservation &amp; blue-chip stability)</li>
-                      <li>Balanced Builder (Core tier-1 assets with controlled growth)</li>
-                      <li>Growth Seeker (High-beta upside with measured diversification)</li>
-                      <li>Dollar-Cost Averager (Milestone-based tranche entry)</li>
-                      <li>Long-Horizon Staker (Yield &amp; protocol utility focus)</li>
-                    </ol>
+                    <div className="space-y-1.5 text-[11px]">
+                      <div className="p-1.5 rounded bg-surface-raised/40 border border-border-subtle/30 flex items-center justify-between">
+                        <span className="font-semibold text-text-primary">Cautious Saver (1–3)</span>
+                        <span className="font-mono text-[10px] text-accent">60% USDC • 30% BTC • 10% ETH</span>
+                      </div>
+                      <div className="p-1.5 rounded bg-surface-raised/40 border border-border-subtle/30 flex items-center justify-between">
+                        <span className="font-semibold text-text-primary">Balanced Builder (4–7)</span>
+                        <span className="font-mono text-[10px] text-accent-2">40% BTC • 30% ETH • 20% SOL • 10% Cash</span>
+                      </div>
+                      <div className="p-1.5 rounded bg-surface-raised/40 border border-border-subtle/30 flex items-center justify-between">
+                        <span className="font-semibold text-text-primary">Growth Seeker (8–10)</span>
+                        <span className="font-mono text-[10px] text-gold">35% ETH • 25% SOL • 25% AVAX • 15% BTC</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Card>
             )}
 
-            {/* 3. Engine Architecture */}
+            {/* 3. Scoring Engine Architecture */}
             {(activeSectionTab === 'all' || activeSectionTab === 'architecture') && (
               <Card elevation="z2" className="p-6 glass-surface border-gold/30" tilt maxTilt={6}>
-                <div className="flex items-center gap-2.5 mb-3">
-                  <div className="p-2 rounded-lg bg-gold/20 text-gold">
-                    <Cpu className="w-5 h-5" />
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-2 rounded-lg bg-gold/20 text-gold">
+                      <Cpu className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-base text-text-primary">
+                        Scoring Architecture
+                      </h3>
+                      <span className="text-[10px] font-mono text-gold">5 Normalized Metrics</span>
+                    </div>
                   </div>
-                  <h3 className="font-display font-bold text-lg text-text-primary">
-                    Engine Architecture
-                  </h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-pill bg-gold/15 border border-gold/40 text-gold font-semibold">
+                    ALGORITHM
+                  </span>
                 </div>
 
-                <ul className="space-y-2.5 text-xs text-text-secondary leading-relaxed">
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-gold">
-                      Multi-Attribute Scoring
-                    </strong>
-                    Deterministic normalization across 5 distinct metric dimensions.
-                  </li>
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-gold">
-                      3D Risk Galaxy (WebGL)
-                    </strong>
-                    Spatial universe mapping asset volatility to radial orbits.
-                  </li>
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-gold">
-                      Live Market Ingestion
-                    </strong>
-                    Real-time CoinGecko price &amp; volume feeds with cached fallback.
-                  </li>
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-gold">
-                      Historical Backtester
-                    </strong>
-                    Monte Carlo timeseries simulator across 1-year, 3-year, and max windows.
-                  </li>
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-gold">
-                      Advisor Verification Desk
-                    </strong>
-                    Dedicated review portal with interactive 3D tower and digital gold seal.
-                  </li>
-                </ul>
+                <div className="space-y-2.5 text-xs text-text-secondary leading-relaxed">
+                  <div>
+                    <div className="flex justify-between text-[11px] font-mono mb-1">
+                      <span className="text-text-primary">Volatility &amp; Downside Stability</span>
+                      <span className="text-gold font-bold">25%</span>
+                    </div>
+                    <div className="w-full h-1.5 rounded-full bg-void/60 overflow-hidden">
+                      <div className="h-full bg-gold rounded-full" style={{ width: '25%' }} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-[11px] font-mono mb-1">
+                      <span className="text-text-primary">Network Scale &amp; Active Wallets</span>
+                      <span className="text-gold font-bold">25%</span>
+                    </div>
+                    <div className="w-full h-1.5 rounded-full bg-void/60 overflow-hidden">
+                      <div className="h-full bg-gold rounded-full" style={{ width: '25%' }} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-[11px] font-mono mb-1">
+                      <span className="text-text-primary">Market Liquidity &amp; Order Depth</span>
+                      <span className="text-accent font-bold">20%</span>
+                    </div>
+                    <div className="w-full h-1.5 rounded-full bg-void/60 overflow-hidden">
+                      <div className="h-full bg-accent rounded-full" style={{ width: '20%' }} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-[11px] font-mono mb-1">
+                      <span className="text-text-primary">Historical Longevity &amp; Uptime</span>
+                      <span className="text-accent font-bold">15%</span>
+                    </div>
+                    <div className="w-full h-1.5 rounded-full bg-void/60 overflow-hidden">
+                      <div className="h-full bg-accent rounded-full" style={{ width: '15%' }} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-[11px] font-mono mb-1">
+                      <span className="text-text-primary">Ecosystem Diversification</span>
+                      <span className="text-accent-2 font-bold">15%</span>
+                    </div>
+                    <div className="w-full h-1.5 rounded-full bg-void/60 overflow-hidden">
+                      <div className="h-full bg-accent-2 rounded-full" style={{ width: '15%' }} />
+                    </div>
+                  </div>
+
+                  <div className="pt-2 border-t border-border-subtle/50 flex items-center justify-between text-[10px] font-mono text-text-muted">
+                    <span>3D WebGL Galaxy</span>
+                    <span>Live CoinGecko Sync</span>
+                    <span className="text-gold">Deterministic</span>
+                  </div>
+                </div>
               </Card>
             )}
 
-            {/* 4. Asset Categories */}
-            {(activeSectionTab === 'all' || activeSectionTab === 'deliverables') && (
-              <Card elevation="z2" className="p-6 glass-surface border-border-glow/30" tilt maxTilt={6}>
-                <div className="flex items-center gap-2.5 mb-3">
-                  <div className="p-2 rounded-lg bg-surface-raised text-accent">
-                    <Sliders className="w-5 h-5" />
+            {/* 4. Curated Asset Universe */}
+            {(activeSectionTab === 'all' || activeSectionTab === 'assets') && (
+              <Card elevation="z2" className="p-6 glass-surface border-accent/30" tilt maxTilt={6}>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-2 rounded-lg bg-accent/20 text-accent">
+                      <Sliders className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-base text-text-primary">
+                        Curated Asset Universe
+                      </h3>
+                      <span className="text-[10px] font-mono text-accent">Blue-Chip Tiers</span>
+                    </div>
                   </div>
-                  <h3 className="font-display font-bold text-lg text-text-primary">
-                    Asset Categories
-                  </h3>
-                </div>
-
-                <ul className="space-y-1.5 text-xs text-text-secondary leading-relaxed list-disc pl-4">
-                  <li><strong>Store of Value:</strong> Bitcoin (BTC) as foundational collateral</li>
-                  <li><strong>Smart Contracts:</strong> Ethereum (ETH), Solana (SOL), Avalanche (AVAX)</li>
-                  <li><strong>Stable Reserves:</strong> USD Coin (USDC), Tether (USDT) for cash buffers</li>
-                  <li><strong>DeFi Ecosystems:</strong> Uniswap (UNI), Chainlink (LINK) oracle feeds</li>
-                  <li><strong>Layer-1 Networks:</strong> Polkadot (DOT), Cardano (ADA), BNB Chain</li>
-                  <li><strong>Risk Weightings:</strong> Proportional allocations based on user score</li>
-                </ul>
-              </Card>
-            )}
-
-            {/* 5. Client Deliverables */}
-            {(activeSectionTab === 'all' || activeSectionTab === 'deliverables') && (
-              <Card elevation="z2" className="p-6 glass-surface border-success/30" tilt maxTilt={6}>
-                <div className="flex items-center gap-2.5 mb-3">
-                  <div className="p-2 rounded-lg bg-success/20 text-success">
-                    <Package className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-text-primary">
-                    Advisory Deliverables
-                  </h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-pill bg-accent/15 border border-accent/40 text-accent font-semibold">
+                    CURATED
+                  </span>
                 </div>
 
                 <ul className="space-y-2 text-xs text-text-secondary leading-relaxed">
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-success">
-                      Personalized Risk Dossier
-                    </strong>
-                    Full suitability breakdown with 1–10 risk score and investor persona badge.
+                  <li className="p-2 rounded bg-surface-raised/40 border border-border-subtle/30">
+                    <div className="flex items-center justify-between mb-0.5">
+                      <strong className="text-text-primary text-[11px]">Store of Value (Layer 1)</strong>
+                      <span className="font-mono text-[10px] text-gold font-bold">BTC</span>
+                    </div>
+                    <p className="text-[10px] text-text-muted">Digital gold reserve asset, highest institutional liquidity, apex network security.</p>
                   </li>
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-success">
-                      Suitability-Verified Portfolio
-                    </strong>
-                    Balanced allocation totaling exactly 100% with certified advisor approval.
+                  <li className="p-2 rounded bg-surface-raised/40 border border-border-subtle/30">
+                    <div className="flex items-center justify-between mb-0.5">
+                      <strong className="text-text-primary text-[11px]">Smart Contracts</strong>
+                      <span className="font-mono text-[10px] text-accent font-bold">ETH • SOL • AVAX</span>
+                    </div>
+                    <p className="text-[10px] text-text-muted">Decentralized compute networks, staking yield, and high-throughput application layers.</p>
                   </li>
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-success">
-                      Plain-Language Explanations
-                    </strong>
-                    2 to 4 clear rationale statements, objective risks, and trigger indicators per coin.
+                  <li className="p-2 rounded bg-surface-raised/40 border border-border-subtle/30">
+                    <div className="flex items-center justify-between mb-0.5">
+                      <strong className="text-text-primary text-[11px]">Liquid Cash Reserves</strong>
+                      <span className="font-mono text-[10px] text-success font-bold">USDC • USDT</span>
+                    </div>
+                    <p className="text-[10px] text-text-muted">Fully backed dollar reserves providing capital preservation and defensive buffers.</p>
                   </li>
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-success">
-                      Stress Test Report
-                    </strong>
-                    Calculated maximum drawdown simulation and downside risk analysis.
+                  <li className="p-2 rounded bg-surface-raised/40 border border-border-subtle/30">
+                    <div className="flex items-center justify-between mb-0.5">
+                      <strong className="text-text-primary text-[11px]">DeFi &amp; Oracle Utility</strong>
+                      <span className="font-mono text-[10px] text-accent-2 font-bold">LINK • UNI</span>
+                    </div>
+                    <p className="text-[10px] text-text-muted">Cross-chain data oracle infrastructure and automated decentralized liquidity protocols.</p>
                   </li>
-                  <li>
-                    <strong className="text-text-primary block font-mono text-[11px] text-success">
-                      DCA Capital Entry Roadmap
-                    </strong>
-                    Time-staggered tranche schedule to eliminate emotional market-timing risks.
+                </ul>
+              </Card>
+            )}
+
+            {/* 5. Client Advisory Deliverables */}
+            {(activeSectionTab === 'all' || activeSectionTab === 'deliverables') && (
+              <Card elevation="z2" className="p-6 glass-surface border-success/30" tilt maxTilt={6}>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-2 rounded-lg bg-success/20 text-success">
+                      <Package className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-base text-text-primary">
+                        Client Deliverables
+                      </h3>
+                      <span className="text-[10px] font-mono text-success">Complete Dossier</span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-pill bg-success/15 border border-success/40 text-success font-semibold">
+                    DELIVERABLES
+                  </span>
+                </div>
+
+                <ul className="space-y-2 text-xs text-text-secondary leading-relaxed">
+                  <li className="flex items-start gap-2">
+                    <FileText className="w-4 h-4 text-success shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-text-primary block font-mono text-[11px] text-success">
+                        Personalized Risk Dossier
+                      </strong>
+                      <span className="text-[11px]">Full suitability breakdown with 1–10 score and investor persona badge.</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <ShieldCheck className="w-4 h-4 text-success shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-text-primary block font-mono text-[11px] text-success">
+                        Suitability-Verified Portfolio
+                      </strong>
+                      <span className="text-[11px]">Balanced allocation totaling exactly 100% with certified advisor digital seal.</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Sparkles className="w-4 h-4 text-success shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-text-primary block font-mono text-[11px] text-success">
+                        Plain-Language Explanations
+                      </strong>
+                      <span className="text-[11px]">2 to 4 transparent rationale bullets and objective risk factors per asset.</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <BarChart3 className="w-4 h-4 text-success shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-text-primary block font-mono text-[11px] text-success">
+                        Downside Stress Simulation
+                      </strong>
+                      <span className="text-[11px]">Simulated drawdown metrics modeling worst-case market contractions.</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <TrendingUp className="w-4 h-4 text-success shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-text-primary block font-mono text-[11px] text-success">
+                        DCA Capital Entry Roadmap
+                      </strong>
+                      <span className="text-[11px]">Staggered multi-week tranche schedule to eliminate emotional market-timing.</span>
+                    </div>
                   </li>
                 </ul>
               </Card>
             )}
 
             {/* 6. Best Practices & Safety Governance */}
-            {(activeSectionTab === 'all' || activeSectionTab === 'practices') && (
+            {(activeSectionTab === 'all' || activeSectionTab === 'governance') && (
               <Card elevation="z2" className="p-6 glass-surface border-warning/30" tilt maxTilt={6}>
-                <div className="flex items-center gap-2.5 mb-3">
-                  <div className="p-2 rounded-lg bg-warning/20 text-warning">
-                    <CheckCircle className="w-5 h-5" />
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-2 rounded-lg bg-warning/20 text-warning">
+                      <Lock className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-base text-text-primary">
+                        Safety &amp; Governance
+                      </h3>
+                      <span className="text-[10px] font-mono text-warning">Fiduciary Standards</span>
+                    </div>
                   </div>
-                  <h3 className="font-display font-bold text-lg text-text-primary">
-                    Safety &amp; Governance
-                  </h3>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-pill bg-warning/15 border border-warning/40 text-warning font-semibold">
+                    FIDUCIARY
+                  </span>
                 </div>
 
                 <ul className="space-y-2 text-xs text-text-secondary leading-relaxed">
                   <li className="flex items-start gap-2">
-                    <span className="text-warning font-bold">•</span>
-                    <span><strong>Human in the Loop:</strong> Certified professional review before any portfolio is published.</span>
+                    <CheckCircle className="w-3.5 h-3.5 text-warning shrink-0 mt-0.5" />
+                    <span><strong>Human in the Loop:</strong> Certified advisor audit and dual sign-off before publishing.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-warning font-bold">•</span>
-                    <span><strong>No Price Speculation:</strong> Zero speculative price predictions or guaranteed return claims.</span>
+                    <AlertTriangle className="w-3.5 h-3.5 text-warning shrink-0 mt-0.5" />
+                    <span><strong>No Price Speculation:</strong> Strictly zero price targets, guaranteed returns, or pump claims.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-warning font-bold">•</span>
-                    <span><strong>Cold Storage Education:</strong> Comprehensive hardware wallet and non-custodial safety guidance.</span>
+                    <Lock className="w-3.5 h-3.5 text-warning shrink-0 mt-0.5" />
+                    <span><strong>Cold Storage Education:</strong> Complete self-custody and hardware wallet setup guides.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-warning font-bold">•</span>
-                    <span><strong>Mathematical Integrity:</strong> Allocations strictly sum to 100% with no unallocated drift.</span>
+                    <CheckCircle className="w-3.5 h-3.5 text-warning shrink-0 mt-0.5" />
+                    <span><strong>Mathematical Integrity:</strong> 100% allocation constraint with no unallocated cash slippage.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-warning font-bold">•</span>
-                    <span><strong>Complete Audit Trail:</strong> Versioned changelog tracking every edit, note, and advisor approval.</span>
+                    <FileText className="w-3.5 h-3.5 text-warning shrink-0 mt-0.5" />
+                    <span><strong>Complete Audit Trail:</strong> Immutable versioned changelog of every recommendation update.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-warning font-bold">•</span>
-                    <span><strong>Educational Compliance:</strong> Prominent disclaimers reinforcing education over financial advice.</span>
+                    <CheckCircle className="w-3.5 h-3.5 text-warning shrink-0 mt-0.5" />
+                    <span><strong>Educational Compliance:</strong> Prominent risk disclosures reinforcing education over trading.</span>
                   </li>
                 </ul>
               </Card>
